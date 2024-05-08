@@ -28,7 +28,7 @@ class GameScreen:
     def update_game(self):
         current_time = pygame.time.get_ticks()
         self.all_sprites.add(self.player)
-        self.MAX_METEORS = self.MAX_METEORS * self.nivel
+        self.MAX_METEORS = self.MAX_METEORS + self.nivel
         if len(self.meteors) < self.MAX_METEORS and current_time - self.meteor_spawn_timer > 1500:
             meteor = Meteor()
             self.all_sprites.add(meteor)
@@ -50,7 +50,7 @@ class GameScreen:
             self.stars.add(star)
             self.star_spawn_timer = current_time
 
-        if (self.player.score >= 10):
+        if (self.player.score >= 3):
             self.success = True
             self.player.level_actived += 1
             self.player.unlock_card()
@@ -78,10 +78,3 @@ class GameScreen:
 
     def is_done(self):
         return not self.running
-
-    # def start_game(self, player):
-    #     self.player = player
-    #     self.all_sprites.add(player)
-
-    # def set_user_data(self, dados_usuarios):
-    #     self.dados_usuarios = dados_usuarios

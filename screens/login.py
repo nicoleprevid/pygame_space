@@ -29,12 +29,12 @@ class LoginScreen:
     def dados_usuarios(self):
         dados_usuarios = []
         try:
-            with open("spacin\dados.json", "r") as file:
+            with open("dados.json", "r") as file:
                 dados_usuarios = json.load(file)
                 print (dados_usuarios)
                 return dados_usuarios
         except FileNotFoundError:
-            print("O arquivo 'spacin\dados.json' não foi encontrado.")
+            print("O arquivo 'dados.json' não foi encontrado.")
         
                    
     def handle_events(self, event):
@@ -90,7 +90,7 @@ class LoginScreen:
     
 def salvar_novo_jogador(username):
     try:
-        with open("spacin\dados.json", "r") as file:
+        with open("dados.json", "r") as file:
                 dados_usuarios = json.load(file)
                  # Carrega o JSON atual
         # Verifica se o jogador já existe no JSON
@@ -111,7 +111,7 @@ def salvar_novo_jogador(username):
         dados_usuarios["players"].append(novo_jogador)
         
         # Salva o JSON atualizado de volta no arquivo
-        with open("spacin\dados.json", "w") as file:
+        with open("dados.json", "w") as file:
             json.dump(dados_usuarios, file)
             
     except FileNotFoundError:

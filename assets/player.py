@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.height = 50
 
         # Carrega a imagem PNG e redimensiona para o tamanho do retângulo
-        self.image = pygame.image.load("spacin\\assets\\rocket.webp")
+        self.image = pygame.image.load("assets\\rocket.webp")
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
 
         # Ajusta o retângulo para as dimensões da imagem
@@ -88,7 +88,7 @@ class Player(pygame.sprite.Sprite):
         }
         
         # Abre o arquivo JSON do jogador
-        with open("spacin\\dados.json", "r+") as file:
+        with open("dados.json", "r+") as file:
             # Carrega os dados JSON existentes
             data = json.load(file)
             
