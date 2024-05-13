@@ -13,22 +13,22 @@ BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 
 class Meteor(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, speed):
         super().__init__()
         self.radius = random.randint(15, 40)
-        self.image = pygame.image.load("assets\meteor.png")
+        self.image = pygame.image.load("assets\\meteor.png")
         self.image = pygame.transform.scale(self.image, (self.radius * 2, self.radius * 2))  # Redimensiona para o dobro do raio
         self.rect = self.image.get_rect()
         self.rect.x = random.randint(0, SCREEN_WIDTH - self.rect.width)
         self.rect.y = random.randint(-100, -40)
-        self.speed_y = random.uniform(1, 3)
+        self.speed_y = random.uniform( speed, 7)
 
     def update(self):
         self.rect.y += self.speed_y
         if self.rect.top > SCREEN_HEIGHT:
             self.rect.x = random.randint(0, SCREEN_WIDTH - self.rect.width)
             self.rect.y = random.randint(-100, -40)
-            self.speed_y = random.uniform(1, 3)
+            self.speed_y = random.uniform(self.speed_y, 9)
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)

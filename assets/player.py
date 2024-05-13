@@ -76,36 +76,60 @@ class Player(pygame.sprite.Sprite):
             
             # Retorna o nome do novo planeta desbloqueado
             return planet_names[self.level_actived - 2]
-        else:
-            return None
-
-    def update_player_json(self):
-        # Cria um dicionário para representar o jogador e seus dados
-        player_data = {
-            "username": self.username,
-            "level": self.level_actived,
-            "cards_unlocked": self.cards_unlocked
-        }
         
+        self.update_player_json()
+        return None
+        
+        
+    def update_player_json(self):
         # Abre o arquivo JSON do jogador
         with open("dados.json", "r+") as file:
-            # Carrega os dados JSON existentes
             data = json.load(file)
-            
-            # Encontra o jogador no arquivo JSON e atualiza seus dados
-            for player in data["players"]:
-                if player["username"] == self.username:
-                    player.update(player_data)
+
+            # Encontra o jogador no arquivo JSON
+            for player_data in data["players"]:
+                if player_data["username"] == self.username:
+                    # Atualiza os dados do jogador
+                    player_data["level"] = self.level_actived
+                    player_data["cards_unlocked"] = self.cards_unlocked
                     break
             
             # Move o cursor de arquivo para o início
             file.seek(0)
             
             # Escreve os dados JSON atualizados de volta para o arquivo
-            json.dump(data, file)
+            json.dump(data, file, indent=4)
             
             # Trunca o arquivo para o tamanho atual para remover dados antigos se necessário
             file.truncate()
+            
+    # def update_player_json(self):
+    #     # Cria um dicionário para representar o jogador e seus dados
+    #     player_data = {
+    #         "username": self.username,
+    #         "level": self.level_actived,
+    #         "cards_unlocked": self.cards_unlocked
+    #     }
+        
+    #     # Abre o arquivo JSON do jogador
+    #     with open("spacin\\dados.json", "r+") as file:
+    #         # Carrega os dados JSON existentes
+    #         data = json.load(file)
+            
+    #         # Encontra o jogador no arquivo JSON e atualiza seus dados
+    #         for player in data["players"]:
+    #             if player["username"] == self.username:
+    #                 player.update(player_data)
+    #                 break
+            
+    #         # Move o cursor de arquivo para o início
+    #         file.seek(0)
+            
+    #         # Escreve os dados JSON atualizados de volta para o arquivo
+    #         json.dump(data, file)
+            
+    #         # Trunca o arquivo para o tamanho atual para remover dados antigos se necessário
+    #         file.truncate()
 
         
         return None

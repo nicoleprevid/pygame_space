@@ -1,6 +1,8 @@
 import pygame
 import random
 
+from assets.alien import Alien
+
 # Inicialização do Pygame
 pygame.init()
 
@@ -27,8 +29,18 @@ class Menu_Success:
         self.next_level_rect = self.next_level_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT * 3 // 4))
         self.should_start_game = False
 
+        # Carregar imagem de fundo
+        self.background_image = pygame.image.load('login.jpg').convert()
+        self.background_image = pygame.transform.scale(self.background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        # Criar o alienígena
+        self.alien = Alien('alien.png', SCREEN_WIDTH - 70, 50)# Criar o alienígena
+        
     def draw(self, surface):
-        surface.fill(YELLOW)
+        # Desenhar imagem de fundo
+        surface.blit(self.background_image, (0, 0))
+        # Desenhar alienígena
+        self.alien.draw(surface)
+        # Desenhar texto e botões
         surface.blit(self.title_text, self.title_rect)
         surface.blit(self.success_message_text, self.success_message_rect)
         pygame.draw.rect(surface, WHITE, self.next_level_rect, 2)

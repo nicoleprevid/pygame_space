@@ -1,8 +1,9 @@
 import pygame
-import random
 
+from assets.alien import Alien
 # Inicialização do Pygame
 pygame.init()
+
 
 # Configurações da tela
 SCREEN_WIDTH = 800
@@ -20,15 +21,28 @@ class Menu_Fail:
         self.font = pygame.font.Font(None, 36)
         self.title_font = pygame.font.Font(None, 48)
         self.title_text = self.title_font.render("SPACIN", True, WHITE)
-        self.fail_message_text = self.font.render("Puts, você foi atingido! Tente novamente e pegue mais estrelas dessa vez.", True, WHITE)
+        self.fail_message_text = self.font.render("Puts, você foi atingido :( Pegue mais estrelas!", True, WHITE)
         self.continue_text = self.font.render("CONTINUE", True, WHITE)
         self.title_rect = self.title_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4))
         self.fail_message_rect = self.fail_message_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
         self.continue_rect = self.continue_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT * 3 // 4))
         self.should_start_game = False
 
+        # Carregar imagem de fundo
+        self.background_image = pygame.image.load('login.jpg').convert()
+        self.background_image = pygame.transform.scale(self.background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+        # Criar o alienígena
+        self.alien = Alien('alien.png', SCREEN_WIDTH - 70, 50)
+
     def draw(self, surface):
-        surface.fill(BLUE)
+        # Desenhar imagem de fundo
+        surface.blit(self.background_image, (0, 0))
+
+        # Desenhar alienígena
+        self.alien.draw(surface)
+
+        # Desenhar texto e botões
         surface.blit(self.title_text, self.title_rect)
         surface.blit(self.fail_message_text, self.fail_message_rect)
         pygame.draw.rect(surface, WHITE, self.continue_rect, 2)
@@ -44,3 +58,4 @@ class Menu_Fail:
                 self.should_start_game = True
 
         return False
+
