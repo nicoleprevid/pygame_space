@@ -53,7 +53,7 @@ class LoginScreen:
         screen.blit(info_surface2, (200, 240))
 
         # Desenha o campo de entrada e a mensagem de erro
-        pygame.draw.rect(screen, (255, 255, 255), self.input_rect, 10, border_radius=5)
+        pygame.draw.rect(screen, (255, 255, 255), self.input_rect, 1, border_radius=5)
         text_surface = self.font.render(self.input_text, True, (255, 255, 255))
         screen.blit(text_surface, (self.input_rect.x + 5, self.input_rect.y + 5))
 

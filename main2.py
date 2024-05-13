@@ -41,6 +41,7 @@ clock = pygame.time.Clock()
 new_quiz = False
 menu_card = Menu_Cards()
 background_music = pygame.mixer.Sound('background1.mp3')
+pygame.display.set_caption('Spacin')
 background_music.play(loops=-1) 
             
 while running:
@@ -49,8 +50,6 @@ while running:
             running = False
         if current_screen == "login":
             login_screen.handle_events(event)
-        
-        
 
     if current_screen == "login":
 
@@ -122,7 +121,7 @@ while running:
         if menu_sucess.should_start_game:
 
             nivel = player.level_actived
-            if (nivel >= 8):
+            if (nivel >= 9 ):
                 current_screen = "menu_card"
             else:
                 player_new = True
@@ -138,8 +137,7 @@ while running:
 
             
     elif current_screen == "pause_menu":
-        print ("pause_menu")
-        pause_menu.paused == True
+        
         pause_menu.handle_events()
         pause_menu.draw()
         if pause_menu.paused == False:

@@ -21,14 +21,14 @@ class Meteor(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = random.randint(0, SCREEN_WIDTH - self.rect.width)
         self.rect.y = random.randint(-100, -40)
-        self.speed_y = random.uniform( speed, 7)
+        self.speed_y = random.uniform( speed, speed+2)
 
     def update(self):
         self.rect.y += self.speed_y
         if self.rect.top > SCREEN_HEIGHT:
             self.rect.x = random.randint(0, SCREEN_WIDTH - self.rect.width)
             self.rect.y = random.randint(-100, -40)
-            self.speed_y = random.uniform(self.speed_y, 9)
+            self.speed_y = random.uniform(self.speed_y, self.speed_y +2)
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)

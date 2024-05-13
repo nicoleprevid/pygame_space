@@ -6,7 +6,7 @@ class QuizGame:
         pygame.init()
         self.WIDTH, self.HEIGHT = 800, 600
         self.screen = screen
-        pygame.display.set_caption('Quiz')
+        
         self.clock = pygame.time.Clock()
         self.WHITE = (255, 255, 255)
         self.BLACK = (0, 0, 0)

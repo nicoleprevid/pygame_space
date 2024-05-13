@@ -56,8 +56,8 @@ class GameScreen:
         if not self.paused:
             current_time = pygame.time.get_ticks()
             self.all_sprites.add(self.player)
-            self.MAX_METEORS = self.MAX_METEORS * self.nivel/4
-            meteor_speed = 1 + self.nivel * 0.5  # Aumenta a velocidade dos meteoros
+            self.MAX_METEORS = self.MAX_METEORS + self.nivel
+            meteor_speed = 1 + self.nivel / 9 # Aumenta a velocidade dos meteoros
             if len(self.meteors) < self.MAX_METEORS and current_time - self.meteor_spawn_timer > 1500 / (self.nivel * 0.5):
                 meteor = Meteor(speed=meteor_speed)  # Passa a velocidade como parâmetro
                 self.all_sprites.add(meteor)
@@ -97,30 +97,31 @@ class GameScreen:
 
                 
     def draw(self, screen):
-        self.screen.blit(self.backgrounds[self.player.level_actived - 1], (0, -140))
+        if(self.player.level_actived < 9):
+            self.screen.blit(self.backgrounds[self.player.level_actived - 1], (0, -140))
 
-        font = pygame.font.Font(None, 36)
-        text_surface = font.render(f"Pontuação: {self.player.score}", True, (255, 255, 255))
-        text_nivel = font.render(f"Nivel: {self.nivel}", True, (255, 255, 255))
+            font = pygame.font.Font(None, 36)
+            text_surface = font.render(f"Pontuação: {self.player.score}", True, (255, 255, 255))
+            text_nivel = font.render(f"Nivel: {self.nivel}", True, (255, 255, 255))
 
-        self.screen.blit(text_surface, (20, 20))
-        self.screen.blit(text_nivel, (40, 40))
+            self.screen.blit(text_surface, (20, 20))
+            self.screen.blit(text_nivel, (40, 40))
 
-        if self.player.show_notification:
-            notification_font = pygame.font.Font(None, 24)
-            notification_text_surface = notification_font.render("New card unlocked!", True, (255, 255, 255))
-            self.screen.blit(notification_text_surface, (400, 50))
+            if self.player.show_notification:
+                notification_font = pygame.font.Font(None, 24)
+                notification_text_surface = notification_font.render("New card unlocked!", True, (255, 255, 255))
+                self.screen.blit(notification_text_surface, (400, 50))
 
-        # Desenha o botão de pausa
-        pygame.draw.rect(screen, self.pause_button_color, self.pause_button_rect)
-        font = pygame.font.Font(None, 24)
-        text_surface = font.render("Pause", True, (255, 255, 255))
-        screen.blit(text_surface, (710, 25))
+            # Desenha o botão de pausa
+            pygame.draw.rect(screen, self.pause_button_color, self.pause_button_rect)
+            font = pygame.font.Font(None, 24)
+            text_surface = font.render("Pause", True, (255, 255, 255))
+            screen.blit(text_surface, (710, 25))
 
-        # Desenha os sprites
-        self.all_sprites.draw(self.screen)
-        
-        pygame.display.flip()
+            # Desenha os sprites
+            self.all_sprites.draw(self.screen)
+            
+            pygame.display.flip()
         
     def handle_pause_menu_events(self, event):
         self.paused = False

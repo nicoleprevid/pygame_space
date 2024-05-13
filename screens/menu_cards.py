@@ -25,15 +25,15 @@ class Menu_Cards:
         self.cards_texts = [
             ("Mercúrio",
              "* É o planeta mais próximo do sol",
-             "* Durante o dia, a temperatura pode chegar a cerca de 430°C, enquanto à noite pode cair para -180°C.",
+             "* Durante o dia, a temperatura pode chegar a cerca de 430°C, enquanto à noite -180°C.",
              "* Mercúrio possui uma superfície marcada por crateras de impacto, desfiladeiros e planícies vulcânicas.",
              "* Mercúrio completa uma órbita ao redor do Sol em aproximadamente 88 dias terrestres.",
              "* Mercúrio é o menor planeta do Sistema Solar"),
             ("Vênus",
              "* Retém o calor do sol em suas nuvens espessas",
-             "* Vênus possui uma temperatura média de superfície de cerca de 462°C, tornando-a o planeta mais quente do Sistema Solar.",
+             "* Vênus possui uma temperatura média de cerca de 462°C, sendo o planeta mais quente do Sistema Solar.",
              "* Leva cerca de 243 dias terrestres para completar uma rotação completa",
-             "* Vênus possui uma atmosfera extremamente densa composta principalmente de dióxido de carbono, com nuvens de ácido sulfúrico",
+             "* Vênus possui uma atmosfera extremamente densa composta principalmente de dióxido de carbono.",
              "* Chamado de 'gêmea da Terra' devido ao seu tamanho e composição semelhantes"),
             ("Terra",
              "* O Oceano Pacífico é o mais extenso do planeta, cobrindo um terço de sua superfície.",
@@ -46,7 +46,7 @@ class Menu_Cards:
              "* A temperatura do planeta varia de -125°C a 20°C, tornando-o um ambiente extremo.",
              "* Sua atmosfera é composta de dióxido de carbono, com traços de nitrogênio e argônio",
              "* O planeta pode conter pistas sobre a origem da vida e oferecer insights sobre a habitabilidade de outros planetas.",
-             "* Sondas robóticas, orbitadores e missões tripuladas planejadas para futuro, são tipos de missões espaciais enviadas para Marte."),
+             "* Sondas robóticas, orbitadores e missões tripuladas planejadas para futuro, são tipos de missões espaciais enviadas para lá."),
             ("Júpiter",
              "* As principais partículas que compõem os anéis de Júpiter são: Gelo, poeira e rochas",
              "* É o maior planeta do Sistema Solar",
@@ -57,7 +57,7 @@ class Menu_Cards:
              "* Possui 145 luas",
              "* Leva aproximadamente 29 anos terrestres para completar uma órbita ao redor do Sol.",
              "* Saturno tem um período de rotação muito rápido, girando em torno de seu eixo em cerca de 10,7 horas terrestres.",
-             "* Os anéis de Saturno são compostos de partículas de gelo e poeira que refletem a luz solar, tornando-os visíveis mesmo através de pequenos telescópios.",
+             "* Os anéis de Saturno são compostos de partículas de gelo e poeira que refletem a luz solar.",
              "* Saturno é cerca de 9,5 vezes maior em diâmetro do que a Terra"),
             ("Urano",
              "* É o planeta mais frio",
@@ -68,7 +68,7 @@ class Menu_Cards:
             ("Netuno",
              "* Foi o planeta descoberto por cálculos matemáticos antes de ser observado visualmente.",
              "* Leva aproximadamente 165 anos terrestres para completar uma órbita ao redor do Sol.",
-             "* Tritão é a maior lua de Netuno e uma das mais intrigantes, com uma atmosfera fina e geisers de nitrogênio ativos em sua superfície",
+             "* Tritão é a maior lua de Netuno e uma das mais intrigantes, com uma atmosfera fina e geisers de nitrogênio ativos. ",
              "* Possui uma temperatura média de cerca de -200°C.",
              "* A Grande Mancha Escura é uma tempestade gigantesca na atmosfera de Netuno, semelhante à Grande Mancha Vermelha de Júpiter"),
         ]
@@ -83,7 +83,7 @@ class Menu_Cards:
         # Carregar imagem de fundo
         self.background_image = pygame.image.load('login.jpg').convert()
         self.background_image = pygame.transform.scale(self.background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
-        self.cards_surface = pygame.Surface((SCREEN_WIDTH - 80, SCREEN_HEIGHT - 130))
+        self.cards_surface = pygame.Surface((SCREEN_WIDTH - 10, SCREEN_HEIGHT - 130))
         self.cards_rect = self.cards_surface.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
         
         self.start_quiz = False

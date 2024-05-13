@@ -1,5 +1,4 @@
-import pygame
-
+import pygame 
 class PauseMenu:
     def __init__(self, screen):
         self.screen = screen
@@ -11,6 +10,7 @@ class PauseMenu:
         self.active_color = (200, 200, 200)
         self.paused = True
         self.sound_on = True
+        self.sound_button_clicked = False  # Variável para controlar se o botão de som foi clicado
 
     def handle_events(self):
         self.paused = True
@@ -24,8 +24,11 @@ class PauseMenu:
             if mouse_clicked:
                 pygame.quit()  # Sai do jogo
         elif self.sound_button_rect.collidepoint(mouse_pos):
-            if mouse_clicked:
+            if mouse_clicked and not self.sound_button_clicked:  # Verifica se o botão ainda não foi clicado
                 self.toggle_sound()  # Alterna o som ligado/desligado
+                self.sound_button_clicked = True  # Atualiza a variável para indicar que o botão foi clicado
+        else:
+            self.sound_button_clicked = False  # Redefine a variável se nenhum botão estiver sendo clicado
 
     def draw(self):
         if self.paused:
@@ -52,5 +55,9 @@ class PauseMenu:
         self.sound_on = not self.sound_on
         if not self.sound_on:
             pygame.mixer.pause()  # Pausa todos os sons
+            self.sound_on = False
+            print("pause")
         else:
             pygame.mixer.unpause()  # Retoma a reprodução dos sons
+            print("unpause")
+            self.sound_on = True

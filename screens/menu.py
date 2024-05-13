@@ -14,30 +14,35 @@ BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
-
 # Classe para representar a tela inicial (menu)
 class Menu:
     def __init__(self):
         self.font = pygame.font.Font(None, 48)
         self.title_font = pygame.font.Font(None, 72)
-        self.continue_text = self.font.render("CONTINUE", True, WHITE)
+        self.continue_text = self.font.render("START GAME", True, WHITE)
         self.title_text = self.title_font.render("SPACIN", True, WHITE)
+        self.welcome_text = self.font.render("Bem-vindo ao jogo que te leva ao espaço!", True, WHITE)
         
         # Define a posição e as dimensões do retângulo em volta do botão "CONTINUE"
-        self.continue_rect = pygame.Rect((SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 - 25, 200, 50))
-        self.title_rect = self.title_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4))
+        self.continue_rect = pygame.Rect((SCREEN_WIDTH // 2 - 150, SCREEN_HEIGHT // 2 + 130 , 300, 50))  # Aumenta a largura do retângulo
+        self.title_rect = self.title_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 190))
+        self.welcome_rect = self.welcome_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 130))  # Posiciona a frase de boas-vindas abaixo do título
         self.should_start_game = False
 
         # Carregar imagem de fundo para o menu
-        self.background = pygame.image.load('back-menu.jpg').convert()
-        self.background = pygame.transform.scale(self.background, (SCREEN_WIDTH, SCREEN_HEIGHT * 1.8))  # Redimensiona a imagem para preencher a tela
+        self.background = pygame.image.load('fundo_menu.webp').convert()
+
+        new_width = int(self.background.get_width() * 1.2)
+        new_height = int(self.background.get_height() * 1.2)
+        self.background = pygame.transform.scale(self.background, (new_width, new_height))
 
     def draw(self, surface):
         # Desenha a imagem de fundo
         surface.blit(self.background, (0, 0))
 
-        # Desenha o título e o botão "CONTINUE"
+        # Desenha o título, a frase de boas-vindas e o botão "CONTINUE"
         surface.blit(self.title_text, self.title_rect)
+        surface.blit(self.welcome_text, self.welcome_rect)  
         pygame.draw.rect(surface, WHITE, self.continue_rect, 2)
         # Centraliza o texto "CONTINUE" dentro do retângulo
         continue_text_rect = self.continue_text.get_rect(center=self.continue_rect.center)

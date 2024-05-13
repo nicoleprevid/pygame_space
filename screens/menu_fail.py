@@ -22,7 +22,7 @@ class Menu_Fail:
         self.title_font = pygame.font.Font(None, 48)
         self.title_text = self.title_font.render("SPACIN", True, WHITE)
         self.fail_message_text = self.font.render("Puts, você foi atingido :( Pegue mais estrelas!", True, WHITE)
-        self.continue_text = self.font.render("CONTINUE", True, WHITE)
+        self.continue_text = self.font.render("TRY AGAIN", True, WHITE)
         self.title_rect = self.title_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4))
         self.fail_message_rect = self.fail_message_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
         self.continue_rect = self.continue_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT * 3 // 4))
