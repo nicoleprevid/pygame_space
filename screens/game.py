@@ -27,6 +27,7 @@ class GameScreen:
  
         # Carregar imagens de fundo para cada nível
         self.backgrounds = [
+            pygame.image.load('1.jpg').convert(),
             pygame.image.load('2.jpg').convert(),
             pygame.image.load('3.jpg').convert(),
             pygame.image.load('4.jpg').convert(),
@@ -34,15 +35,14 @@ class GameScreen:
             pygame.image.load('6.jpg').convert(),
             pygame.image.load('7.jpg').convert(),
             pygame.image.load('8.jpg').convert(),
-            pygame.image.load('9.jpg').convert(),
             # Adicione mais imagens para outros níveis, se necessário
         ]
         
         # Redimensiona as imagens de fundo para preencher toda a tela
-        self.backgrounds = [pygame.transform.scale(background, (screen.get_width(), screen.get_height() + screen.get_height()/2 )) for background in self.backgrounds]
+        self.backgrounds = [pygame.transform.scale(background, (screen.get_width(), screen.get_height() * 1.5 )) for background in self.backgrounds]
 
 
-        # Estado do jogo
+        # Estado do jogos
         self.paused = False
 
     def handle_events(self, event):
@@ -97,7 +97,7 @@ class GameScreen:
 
                 
     def draw(self, screen):
-        self.screen.blit(self.backgrounds[self.player.level_actived - 1], (0, -110))
+        self.screen.blit(self.backgrounds[self.player.level_actived - 1], (0, -140))
 
         font = pygame.font.Font(None, 36)
         text_surface = font.render(f"Pontuação: {self.player.score}", True, (255, 255, 255))
