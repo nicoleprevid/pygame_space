@@ -35,7 +35,7 @@ class GameScreen:
             pygame.image.load('6.jpg').convert(),
             pygame.image.load('7.jpg').convert(),
             pygame.image.load('8.jpg').convert(),
-            # Adicione mais imagens para outros níveis, se necessário
+            
         ]
         
         # Redimensiona as imagens de fundo para preencher toda a tela

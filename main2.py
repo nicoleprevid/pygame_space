@@ -67,7 +67,7 @@ while running:
         # menu_screen.handle_events(event)
         menu_screen.update()
         menu_screen.draw(screen)
-        if menu_screen.should_start_game:
+        if menu_screen.should_start_game :
             current_screen = "game"
             print("abre game")
 

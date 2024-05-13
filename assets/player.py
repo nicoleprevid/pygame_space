@@ -103,33 +103,5 @@ class Player(pygame.sprite.Sprite):
             # Trunca o arquivo para o tamanho atual para remover dados antigos se necessário
             file.truncate()
             
-    # def update_player_json(self):
-    #     # Cria um dicionário para representar o jogador e seus dados
-    #     player_data = {
-    #         "username": self.username,
-    #         "level": self.level_actived,
-    #         "cards_unlocked": self.cards_unlocked
-    #     }
-        
-    #     # Abre o arquivo JSON do jogador
-    #     with open("spacin\\dados.json", "r+") as file:
-    #         # Carrega os dados JSON existentes
-    #         data = json.load(file)
-            
-    #         # Encontra o jogador no arquivo JSON e atualiza seus dados
-    #         for player in data["players"]:
-    #             if player["username"] == self.username:
-    #                 player.update(player_data)
-    #                 break
-            
-    #         # Move o cursor de arquivo para o início
-    #         file.seek(0)
-            
-    #         # Escreve os dados JSON atualizados de volta para o arquivo
-    #         json.dump(data, file)
-            
-    #         # Trunca o arquivo para o tamanho atual para remover dados antigos se necessário
-    #         file.truncate()
 
-        
         return None
