@@ -46,6 +46,13 @@
             "username": "mm",
             "level": 1,
             "cards_unlocked": []
+        },
+        {
+            "username": "kokokok\u007f",
+            "level": 2,
+            "cards_unlocked": [
+                "Mercurio"
+            ]
         }
     ]
 }
